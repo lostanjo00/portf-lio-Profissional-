@@ -36,21 +36,21 @@ const projetos = [
         descricao: "Site pessoal para apresentar meus projetos e habilidades.",
         tecnologias: ["HTML", "CSS", "JavaScript"],
         categoria: "frontend",
-        link: "#"
+        link: "https://github.com/lostanjo00/reposit-rio-"
     },
     {
         nome: "Sistema de Cadastro",
         descricao: "Projeto focado em lógica e estrutura de dados.",
         tecnologias: ["JavaScript"],
         categoria: "backend",
-        link: "#"
+        link: "https://github.com/lostanjo00"
     },
     {
         nome: "Projeto em Estudo",
         descricao: "Aplicação para praticar conceitos fundamentais.",
         tecnologias: ["HTML", "CSS"],
         categoria: "frontend",
-        link: "#"
+        link: "https://github.com/lostanjo00"
     }
 ];
 
