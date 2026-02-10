@@ -32,7 +32,13 @@ body {
 .header {
     text-align: center;
     padding: 2.5rem 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* CENTRALIZA tudo */
+    gap: 1rem;
 }
+
 
 /* FOTO PERFIL */
 .foto-perfil {
@@ -202,6 +208,29 @@ button:hover, a:hover {
     button, a {
         width: 100%;
         text-align: center;
+    }
+}
+@media (max-width: 480px) {
+
+    section {
+        padding: 1.2rem 1rem;
+    }
+
+    .projeto {
+        padding: 1.3rem;
+    }
+
+    .projeto h3 {
+        font-size: 1.1rem;
+    }
+
+    .projeto p {
+        font-size: 0.95rem;
+    }
+
+    button, a {
+        width: auto; /* remove botão gigante */
+        padding: 10px 16px;
     }
 }
 
