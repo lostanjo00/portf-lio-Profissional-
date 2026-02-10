@@ -98,6 +98,7 @@ button, a {
     cursor: pointer;
     display: inline-flex;
     align-items: center;
+    justify-content: center; /* 👈 ISSO CENTRALIZA O TEXTO */
     gap: 6px;
     transition: 
         transform 0.2s ease,
