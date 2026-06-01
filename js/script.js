@@ -138,6 +138,66 @@ function observarAnimacoes() {
 }
 
 /* =========================
+   CHATBOT MOCK IA
+========================= */
+const chatBtn = document.getElementById('chatbot-btn');
+const chatWindow = document.getElementById('chatbot-window');
+const closeChatBtn = document.getElementById('close-chat');
+const chatBody = document.getElementById('chat-body');
+const chatInput = document.getElementById('chat-input');
+const sendMsgBtn = document.getElementById('send-msg');
+
+chatBtn.addEventListener('click', () => {
+    chatWindow.classList.add('open');
+});
+
+closeChatBtn.addEventListener('click', () => {
+    chatWindow.classList.remove('open');
+});
+
+function addMessage(text, type) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', type);
+    msgDiv.innerHTML = text;
+    chatBody.appendChild(msgDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function processUserMessage(msg) {
+    const lowerMsg = msg.toLowerCase();
+    
+    // Simulate thinking delay
+    setTimeout(() => {
+        if (lowerMsg.includes('projeto')) {
+            addMessage('Meus projetos incluem este Portfólio Profissional, um Sistema de Cadastro e um Projeto em Estudo. Você pode vê-los detalhados na seção Projetos!', 'ai-msg');
+        } else if (lowerMsg.includes('contato') || lowerMsg.includes('email') || lowerMsg.includes('linkedin')) {
+            addMessage('Você pode falar comigo pelo email mauriciojr918@gmail.com ou me chamar no LinkedIn. Todos os links estão na seção de Contato.', 'ai-msg');
+        } else if (lowerMsg.includes('habilidade') || lowerMsg.includes('experiência') || lowerMsg.includes('sobre')) {
+            addMessage('Sou estudante do 1º período de Engenharia de Software. Meu foco principal é Front-end (HTML, CSS, JavaScript) e estou buscando aprender cada vez mais na prática.', 'ai-msg');
+        } else if (lowerMsg.includes('olá') || lowerMsg.includes('oi') || lowerMsg.includes('bom dia') || lowerMsg.includes('boa tarde')) {
+            addMessage('Olá! Como posso ajudar você a conhecer melhor o trabalho do Maurício?', 'ai-msg');
+        } else {
+            addMessage('Desculpe, sou um bot simples e ainda estou aprendendo. Tente me perguntar sobre "projetos", "contatos" ou "sobre mim".', 'ai-msg');
+        }
+    }, 600);
+}
+
+sendMsgBtn.addEventListener('click', () => {
+    const msg = chatInput.value.trim();
+    if (msg !== '') {
+        addMessage(msg, 'user-msg');
+        chatInput.value = '';
+        processUserMessage(msg);
+    }
+});
+
+chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendMsgBtn.click();
+    }
+});
+
+/* =========================
    INICIALIZAÇÃO
 ========================= */
 renderizarProjetos(projetos);
