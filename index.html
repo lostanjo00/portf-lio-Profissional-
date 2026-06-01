@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <title>Portfólio | Maurício Ribeiro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Maurício Ribeiro, estudante de Engenharia de Software com foco em Front-end.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -12,15 +21,25 @@
 
 <body>
 
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-logo">MR</div>
+        <ul class="nav-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        <button id="toggle-theme" class="btn-theme" aria-label="Alternar Tema">
+            🌙
+        </button>
+    </nav>
+
     <!-- ===== CABEÇALHO ===== -->
-    <header class="header">
+    <header class="header" id="inicio">
         <img src="assets/imagens/imagem1.jpeg" alt="Foto do perfil" class="foto-perfil">
         <h1>Maurício Ribeiro de Souza Junior</h1>
         <p>Estudante de Engenharia de Software | Foco em Frontend</p>
-        <button id="toggle-theme" class="btn-theme">
-            🌙 Modo escuro
-        </button>
-
+        <a href="#projetos" class="btn-cta">Ver meus projetos</a>
     </header>
 
     <!-- ===== SOBRE ===== -->
@@ -45,26 +64,27 @@
     <!-- ===== CONTATO ===== -->
     <section id="contato">
         <h2>Contato</h2>
+        <p class="contato-desc">Estou disponível para novas oportunidades. Entre em contato!</p>
 
-        <ul>
-            <li>Email: mauriciojr918@gmail.com</li>
+        <div class="contato-cards">
+            <a href="mailto:mauriciojr918@gmail.com" class="contato-card">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+                <p>mauriciojr918@gmail.com</p>
+            </a>
 
-            <li>
-                GitHub:
-                <a href="https://github.com/lostanjo00" target="_blank" rel="noopener noreferrer">
-                    github.com
-                </a>
-            </li>
+            <a href="https://github.com/lostanjo00" target="_blank" rel="noopener noreferrer" class="contato-card">
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub</span>
+                <p>github.com/lostanjo00</p>
+            </a>
 
-            <li>
-                LinkedIn:
-                <a href="https://www.linkedin.com/in/maur%C3%ADcio-ribeiro-048661207/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BZl4KeiDhRAmzAXoJRYWzGw%3D%3D"
-                    target="_blank" rel="noopener noreferrer">
-                    linkedin.com
-                </a>
-            </li>
-
-        </ul>
+            <a href="https://www.linkedin.com/in/maur%C3%ADcio-ribeiro-048661207/" target="_blank" rel="noopener noreferrer" class="contato-card">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn</span>
+                <p>Conecte-se comigo</p>
+            </a>
+        </div>
     </section>
 
     <!-- ===== RODAPÉ ===== -->

@@ -8,10 +8,10 @@ function aplicarTemaSalvo() {
 
     if (temaSalvo === "light") {
         document.body.classList.add("light");
-        toggleBtn.textContent = "🌞 Modo claro";
+        toggleBtn.textContent = "🌞";
     } else {
         document.body.classList.remove("light");
-        toggleBtn.textContent = "🌙 Modo escuro";
+        toggleBtn.textContent = "🌙";
     }
 }
 
@@ -22,7 +22,7 @@ toggleBtn.addEventListener("click", () => {
     localStorage.setItem("theme", temaAtual);
 
     toggleBtn.textContent =
-        temaAtual === "light" ? "🌞 Modo claro" : "🌙 Modo escuro";
+        temaAtual === "light" ? "🌞" : "🌙";
 });
 
 aplicarTemaSalvo();
@@ -59,16 +59,21 @@ const projetos = [
 ========================= */
 const sectionProjetos = document.getElementById("projetos");
 
-function renderizarProjetos(lista) {
-    sectionProjetos.innerHTML = `
-        <h2>Projetos</h2>
+// Criar estrutura base uma vez
+sectionProjetos.innerHTML = `
+    <h2>Projetos</h2>
+    <div class="filtros">
+        <button data-filter="all" class="ativo">Todos</button>
+        <button data-filter="frontend">Frontend</button>
+        <button data-filter="backend">Backend</button>
+    </div>
+    <div id="projetos-grid" style="width: 100%;"></div>
+`;
 
-        <div class="filtros">
-            <button data-filter="all">Todos</button>
-            <button data-filter="frontend">Frontend</button>
-            <button data-filter="backend">Backend</button>
-        </div>
-    `;
+const projetosGrid = document.getElementById("projetos-grid");
+
+function renderizarProjetos(lista) {
+    projetosGrid.innerHTML = "";
 
     lista.forEach(projeto => {
         const article = document.createElement("article");
@@ -81,10 +86,9 @@ function renderizarProjetos(lista) {
             <a href="${projeto.link}" target="_blank">Ver no GitHub</a>
         `;
 
-        sectionProjetos.appendChild(article);
+        projetosGrid.appendChild(article);
     });
 
-    aplicarFiltro();
     observarAnimacoes();
 }
 
@@ -94,6 +98,11 @@ function renderizarProjetos(lista) {
 function aplicarFiltro() {
     document.querySelectorAll(".filtros button").forEach(botao => {
         botao.addEventListener("click", () => {
+            // Remove active
+            document.querySelectorAll(".filtros button").forEach(b => b.classList.remove("ativo"));
+            // Add active
+            botao.classList.add("ativo");
+
             const filtro = botao.dataset.filter;
 
             if (filtro === "all") {
@@ -107,6 +116,9 @@ function aplicarFiltro() {
         });
     });
 }
+
+// Inicializa os filtros
+aplicarFiltro();
 
 /* =========================
    ANIMAÇÕES AO ROLAR

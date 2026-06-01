@@ -5,45 +5,113 @@
     box-sizing: border-box;
 }
 
-/* ===== CORES (PRETO + AZUL) ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== CORES (MODO ESCURO - PADRÃO) ===== */
 :root {
-    --bg-color: #050b14;
-    --text-color: #e6e9ef;
-    --card-color: #0a1324;
-    --blue: #1e90ff;
+    --bg-color: #0f172a; /* Slate 900 */
+    --text-color: #f8fafc; /* Slate 50 */
+    --text-muted: #94a3b8; /* Slate 400 */
+    --card-color: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity */
+    --card-border: rgba(255, 255, 255, 0.1);
+    --blue: #3b82f6; /* Blue 500 */
+    --blue-hover: #2563eb; /* Blue 600 */
+    --navbar-bg: rgba(15, 23, 42, 0.8);
 }
 
 /* MODO CLARO */
 body.light {
-    --bg-color: #f2f6ff;
-    --text-color: #050b14;
-    --card-color: #ffffff;
+    --bg-color: #f8fafc; /* Slate 50 */
+    --text-color: #0f172a; /* Slate 900 */
+    --text-muted: #475569; /* Slate 600 */
+    --card-color: rgba(255, 255, 255, 0.8);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --blue: #2563eb;
+    --blue-hover: #1d4ed8;
+    --navbar-bg: rgba(248, 250, 252, 0.8);
 }
 
 /* ===== BODY ===== */
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family: 'Outfit', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.4s ease, color 0.4s ease;
+    line-height: 1.6;
 }
 
-/* ===== HEADER ===== */
+/* ===== NAVBAR ===== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--card-border);
+    transition: background 0.4s ease;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 1.05rem;
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+.btn-theme {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+.btn-theme:hover {
+    transform: scale(1.1);
+}
+
+/* ===== HEADER (INICIO) ===== */
 .header {
     text-align: center;
-    padding: 2.5rem 1.5rem;
-
+    padding: 6rem 1.5rem 4rem;
     display: flex;
     flex-direction: column;
-    align-items: center; /* CENTRALIZA tudo */
-    gap: 1rem;
+    align-items: center;
+    gap: 1.2rem;
+    min-height: 80vh;
+    justify-content: center;
 }
-
 
 /* FOTO PERFIL */
 .foto-perfil {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     border: 4px solid var(--blue);
     object-fit: cover;
@@ -53,86 +121,125 @@ body {
 
 .foto-perfil:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(30, 144, 255, 0.7);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
 }
 
 /* TITULOS */
-h1, h2, h3 {
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
+    background: linear-gradient(to right, var(--blue), #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h2 {
-    color: var(--blue);
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: var(--blue);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 /* SEÇÕES */
 section {
-    padding: 2rem 1.5rem;
-    max-width: 1000px;
+    padding: 5rem 1.5rem;
+    max-width: 1100px;
     margin: auto;
 }
+
 #sobre {
     display: flex;
     flex-direction: column;
-    align-items: center;   /* centraliza horizontal */
-    text-align: center;    /* centraliza o texto */
+    align-items: center;
+    text-align: center;
 }
+
 #sobre p {
-    max-width: 700px;
-    line-height: 1.7;
-    margin-top: 1rem;
+    max-width: 800px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-size: 1.1rem;
 }
 
-
-
-/* BOTÃO */
-button, a {
-    background: linear-gradient(135deg, #1e90ff, #4facfe);
+/* BOTÃO CTA */
+.btn-cta, a.btn-cta {
+    background: var(--blue);
     color: white;
-    padding: 10px 20px;
-    border-radius: 999px; /* pill button */
+    padding: 12px 28px;
+    border-radius: 999px;
     border: none;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
     text-decoration: none;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    justify-content: center; /* 👈 ISSO CENTRALIZA O TEXTO */
-    gap: 6px;
-    transition: 
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        opacity 0.2s ease;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    margin-top: 1rem;
 }
 
-button:hover, a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(30, 144, 255, 0.25);
-    opacity: 0.95;
+.btn-cta:hover, a.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+    background: var(--blue-hover);
 }
-
 
 /* PROJETOS */
-.projeto {
-    background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.03),
-        rgba(255,255,255,0)
-    ), var(--card-color);
+.filtros {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
 
-    padding: 2rem;
+.filtros button {
+    background: transparent;
+    border: 2px solid var(--blue);
+    color: var(--text-color);
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.filtros button:hover, .filtros button.ativo {
+    background: var(--blue);
+    color: white;
+}
+
+.projeto {
+    background: var(--card-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 2.5rem;
     border-radius: 20px;
     margin-bottom: 2rem;
-
-    border: 1px solid rgba(255,255,255,0.06);
-
+    border: 1px solid var(--card-border);
     opacity: 0;
-    transform: translateY(40px);
-    transition: 
-        opacity 0.6s ease,
-        transform 0.6s ease,
-        box-shadow 0.3s ease;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .projeto.show {
@@ -141,97 +248,133 @@ button:hover, a:hover {
 }
 
 .projeto:hover {
-    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border-color: var(--blue);
 }
 
-/* ===== RESPONSIVO ===== */
-@media (max-width: 768px) {
-    .foto-perfil {
-        width: 130px;
-        height: 130px;
-    }
-
-    h1 {
-        font-size: 1.6rem;
-    }
+.projeto p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
 }
 
-@media (max-width: 480px) {
-    .foto-perfil {
-        width: 110px;
-        height: 110px;
-    }
-
-    button, a {
-        width: 100%;
-        text-align: center;
-    }
+.projeto strong {
+    color: var(--text-color);
 }
 
+.projeto a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: color 0.3s ease;
+}
+
+.projeto a:hover {
+    color: var(--blue-hover);
+    text-decoration: underline;
+}
+
+/* CONTATO */
+.contato-desc {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.contato-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.contato-card {
+    background: var(--card-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contato-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    border-color: var(--blue);
+}
+
+.contato-card i {
+    font-size: 2.5rem;
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+}
+
+.contato-card span {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.contato-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ===== RODAPÉ ===== */
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--card-border);
+    color: var(--text-muted);
+    margin-top: 2rem;
+}
 
 /* ===== RESPONSIVIDADE ===== */
 
 /* Tablets */
 @media (max-width: 768px) {
-    .header {
-        padding: 1.5rem;
-    }
-
-    .foto-perfil {
-        width: 130px;
-        height: 130px;
+    .nav-links {
+        display: none; 
     }
 
     h1 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
-    section {
-        padding: 1.5rem;
+    .foto-perfil {
+        width: 150px;
+        height: 150px;
     }
 }
 
 /* Celulares */
 @media (max-width: 480px) {
-    .foto-perfil {
-        width: 110px;
-        height: 110px;
+    .header {
+        padding: 5rem 1rem 3rem;
     }
 
     h1 {
-        font-size: 1.3rem;
+        font-size: 1.8rem;
     }
 
-    p {
-        font-size: 0.95rem;
+    .foto-perfil {
+        width: 120px;
+        height: 120px;
     }
-
-    button, a {
-        width: 100%;
-        text-align: center;
-    }
-}
-@media (max-width: 480px) {
 
     section {
-        padding: 1.2rem 1rem;
+        padding: 3rem 1rem;
     }
 
     .projeto {
-        padding: 1.3rem;
-    }
-
-    .projeto h3 {
-        font-size: 1.1rem;
-    }
-
-    .projeto p {
-        font-size: 0.95rem;
-    }
-
-    button, a {
-        width: auto; /* remove botão gigante */
-        padding: 10px 16px;
+        padding: 1.5rem;
     }
 }
-
