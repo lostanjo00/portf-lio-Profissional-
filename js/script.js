@@ -39,6 +39,13 @@ const projetos = [
         link: "https://github.com/lostanjo00/reposit-rio-"
     },
     {
+        nome: "Homelab Linux Ubuntu",
+        descricao: "Laboratório prático utilizando Ubuntu Server. Configuração de SSH, Nginx, monitoramento, firewall UFW e publicação via Cloudflare Tunnel.",
+        tecnologias: ["Linux", "Ubuntu", "Nginx", "Cloudflare", "Redes"],
+        categoria: "infra",
+        link: "https://github.com/lostanjo00"
+    },
+    {
         nome: "Sistema de Cadastro",
         descricao: "Projeto focado em lógica e estrutura de dados.",
         tecnologias: ["JavaScript"],
@@ -66,6 +73,7 @@ sectionProjetos.innerHTML = `
         <button data-filter="all" class="ativo">Todos</button>
         <button data-filter="frontend">Frontend</button>
         <button data-filter="backend">Backend</button>
+        <button data-filter="infra">Infraestrutura</button>
     </div>
     <div id="projetos-grid" style="width: 100%;"></div>
 `;
@@ -169,11 +177,11 @@ function processUserMessage(msg) {
     // Simulate thinking delay
     setTimeout(() => {
         if (lowerMsg.includes('projeto')) {
-            addMessage('Meus projetos incluem este Portfólio Profissional, um Sistema de Cadastro e um Projeto em Estudo. Você pode vê-los detalhados na seção Projetos!', 'ai-msg');
+            addMessage('Meus projetos incluem este Portfólio Profissional, um Homelab com Linux Ubuntu, um Sistema de Cadastro e um Projeto em Estudo. Você pode vê-los detalhados na seção Projetos!', 'ai-msg');
         } else if (lowerMsg.includes('contato') || lowerMsg.includes('email') || lowerMsg.includes('linkedin')) {
             addMessage('Você pode falar comigo pelo email mauriciojr918@gmail.com ou me chamar no LinkedIn. Todos os links estão na seção de Contato.', 'ai-msg');
         } else if (lowerMsg.includes('habilidade') || lowerMsg.includes('experiência') || lowerMsg.includes('sobre')) {
-            addMessage('Sou estudante do 1º período de Engenharia de Software. Meu foco principal é Front-end (HTML, CSS, JavaScript) e estou buscando aprender cada vez mais na prática.', 'ai-msg');
+            addMessage('Sou estudante de Engenharia de Software e ADS. Tenho foco em Infraestrutura, Cloud Computing (AWS), Linux e Redes, além de conhecimentos em programação.', 'ai-msg');
         } else if (lowerMsg.includes('olá') || lowerMsg.includes('oi') || lowerMsg.includes('bom dia') || lowerMsg.includes('boa tarde')) {
             addMessage('Olá! Como posso ajudar você a conhecer melhor o trabalho do Maurício?', 'ai-msg');
         } else {
