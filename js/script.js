@@ -1,5 +1,6 @@
 /* =========================================================
    PORTFÓLIO PROFISSIONAL — MAURÍCIO RIBEIRO
+   Tema: Dark Futurista / Quantum Tech
    JavaScript: Interatividade, Menu Mobile, Filtros & Chatbot IA
 ========================================================= */
 
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             document.body.classList.remove("light");
             if (themeIcon) {
-                themeIcon.className = "fa-solid fa-moon";
+                themeIcon.className = "fa-solid fa-bolt-lightning";
             }
         }
     }
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("portfolio_theme", novoTema);
 
             if (themeIcon) {
-                themeIcon.className = isLight ? "fa-solid fa-sun" : "fa-solid fa-moon";
+                themeIcon.className = isLight ? "fa-solid fa-sun" : "fa-solid fa-bolt-lightning";
             }
         });
     }
@@ -87,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 120;
+            const sectionTop = current.offsetTop - 130;
             const sectionId = current.getAttribute("id");
             const navLink = document.querySelector(`.nav-links a[href*="${sectionId}"]`);
 
@@ -126,11 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
             linkDemo: null
         },
         {
-            nome: "Portfólio Profissional Web",
+            nome: "Portfólio Profissional Quantum",
             badge: "💻 Frontend & UI/UX",
             destaque: false,
-            descricao: "Site pessoal moderno e minimalista com suporte a tema escuro/claro, menu hambúrguer responsivo para celular, filtros interativos de categorias e assistente virtual inteligente integrado.",
-            tecnologias: ["HTML5", "CSS3", "JavaScript", "Mobile-First", "Glassmorphism"],
+            descricao: "Interface web de alta performance sob estética Dark Futurista, suporte a tema escuro/claro, menu hambúrguer responsivo para celular, filtros dinâmicos e assistente virtual inteligente integrado.",
+            tecnologias: ["HTML5", "CSS3", "JavaScript", "Quantum Glass", "Mobile-First"],
             categoria: "frontend",
             link: "https://github.com/lostanjo00/portf-lio-Profissional-",
             linkDemo: "https://lostanjo00.github.io/portf-lio-Profissional-/"
@@ -139,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
             nome: "Sistema de Cadastro & Lógica",
             badge: "⚡ Backend & Dados",
             destaque: false,
-            descricao: "Aplicação focada em lógica de programação, manipulação de estruturas de dados e regras de validação cadastrais.",
+            descricao: "Aplicação focada em lógica de programação estruturada, manipulação de dados e regras de validação cadastrais.",
             tecnologias: ["JavaScript", "Lógica", "Estrutura de Dados"],
             categoria: "backend",
             link: "https://github.com/lostanjo00",
@@ -168,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         lista.forEach(projeto => {
             const article = document.createElement("article");
-            article.classList.add("projeto-card", "card-glass");
+            article.classList.add("projeto-card", "card-quantum");
             if (projeto.destaque) {
                 article.classList.add("destaque");
             }
@@ -186,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
             article.innerHTML = `
                 <div>
                     <span class="projeto-badge">${projeto.badge}</span>
-                    <h3 style="margin-top: 0.8rem; margin-bottom: 0.5rem;">${projeto.nome}</h3>
+                    <h3 style="margin-top: 0.9rem; margin-bottom: 0.5rem;">${projeto.nome}</h3>
                     <p>${projeto.descricao}</p>
                 </div>
 
@@ -206,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
             projetosGrid.appendChild(article);
         });
 
-        // Animação de entrada suave com IntersectionObserver
+        // Animação de entrada suave
         observarCards();
     }
 
@@ -218,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     entry.target.classList.add("show");
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08 });
 
         cards.forEach(card => observer.observe(card));
     }
@@ -248,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarProjetos(projetos);
 
     /* =====================================================
-       7. CHATBOT ASSISTENTE VIRTUAL IA
+       7. CHATBOT ASSISTENTE VIRTUAL IA (HOLOGRÁFICO)
     ===================================================== */
     const chatBtn = document.getElementById("chatbot-btn");
     const chatWindow = document.getElementById("chatbot-window");
@@ -281,10 +282,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function processUserMessage(msg) {
         const lowerMsg = msg.toLowerCase().trim();
 
-        // Feedback visual de digitação
+        // Feedback visual de processamento
         const typingIndicator = document.createElement("div");
         typingIndicator.classList.add("message", "ai-msg");
-        typingIndicator.innerHTML = "<em>Digitando...</em>";
+        typingIndicator.innerHTML = '<span class="terminal-prefix">&gt; PROCESSING_QUERY...</span>';
         chatBody.appendChild(typingIndicator);
         chatBody.scrollTop = chatBody.scrollHeight;
 
@@ -293,39 +294,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (lowerMsg.includes("projeto") || lowerMsg.includes("taranis") || lowerMsg.includes("ia") || lowerMsg.includes("app")) {
                 addMessage(`
-                    Meus principais projetos são:<br><br>
+                    <span class="terminal-prefix">&gt; QUERY_RESULT: PROJETOS</span>
                     🚀 <strong>Taranis Sales AI</strong>: Copiloto Comercial com IA Generativa, cálculo dinâmico de TCO e Streamlit no ar!<br>
                     🐧 <strong>Homelab Linux Ubuntu</strong>: Infraestrutura de servidores com Nginx, UFW e Cloudflare Tunnel;<br>
-                    💻 <strong>Portfólio Profissional</strong>: Este site responsivo e modular.<br><br>
-                    Você pode filtrar por <strong>Inteligência Artificial</strong> na seção Projetos para testar ao vivo!
+                    💻 <strong>Portfólio Profissional</strong>: Interface Quantum Tech com alta responsividade.<br><br>
+                    Você pode selecionar o filtro <strong>Inteligência Artificial</strong> na seção Projetos para testar ao vivo!
                 `, "ai-msg");
             } else if (lowerMsg.includes("contato") || lowerMsg.includes("email") || lowerMsg.includes("linkedin") || lowerMsg.includes("falar")) {
                 addMessage(`
-                    Você pode entrar em contato comigo diretamente por:<br><br>
+                    <span class="terminal-prefix">&gt; QUERY_RESULT: CONTACT_LINK</span>
                     📧 <strong>E-mail:</strong> mauriciojr918@gmail.com<br>
                     💼 <strong>LinkedIn:</strong> linkedin.com/in/mauriciiojr<br>
                     🐙 <strong>GitHub:</strong> github.com/lostanjo00<br><br>
-                    Estou disponível para vagas de estágio e projetos!
+                    Estou disponível para oportunidades de estágio e projetos na área de tecnologia!
                 `, "ai-msg");
             } else if (lowerMsg.includes("habilidade") || lowerMsg.includes("tecnologia") || lowerMsg.includes("stack") || lowerMsg.includes("experiencia") || lowerMsg.includes("sobre")) {
                 addMessage(`
-                    Sou estudante de <strong>Engenharia de Software</strong> e <strong>ADS</strong>.<br><br>
-                    Minhas principais competências técnicas incluem:<br>
+                    <span class="terminal-prefix">&gt; QUERY_RESULT: TECH_STACK</span>
+                    Estudante de <strong>Engenharia de Software</strong> e <strong>ADS</strong>.<br><br>
                     • <strong>IA & Dados:</strong> Python, IA Generativa, Streamlit, Plotly e Prompt Engineering;<br>
                     • <strong>Infraestrutura:</strong> Linux (Ubuntu Server), Nginx, Cloudflare Tunnel, Redes e AWS;<br>
-                    • <strong>Frontend:</strong> HTML5, CSS3 moderno, JavaScript e Responsividade.
+                    • <strong>Frontend:</strong> HTML5, CSS3 moderno, JavaScript e Responsividade total.
                 `, "ai-msg");
             } else if (lowerMsg.includes("ola") || lowerMsg.includes("olá") || lowerMsg.includes("oi") || lowerMsg.includes("bom dia") || lowerMsg.includes("boa tarde") || lowerMsg.includes("boa noite")) {
                 addMessage(`
+                    <span class="terminal-prefix">&gt; STATUS: 200_OK</span>
                     Olá! Prazer em falar com você! 👋<br><br>
-                    Como posso te ajudar a conhecer melhor o trabalho e as qualificações do Maurício? Você pode me perguntar sobre <strong>projetos</strong>, <strong>habilidades</strong> ou <strong>contato</strong>!
+                    Como posso te ajudar a conhecer melhor o trabalho e as competências do Maurício? Pergunte sobre <strong>projetos</strong>, <strong>IA</strong> ou <strong>contato</strong>!
                 `, "ai-msg");
             } else {
                 addMessage(`
-                    Obrigado pela mensagem! Sou o assistente do Maurício e posso te explicar sobre seus <strong>projetos</strong> (como o Taranis Sales AI e Homelab), suas <strong>habilidades técnicas</strong> ou como entrar em <strong>contato</strong> com ele!
+                    <span class="terminal-prefix">&gt; TERMINAL_INFO:</span>
+                    Sou o assistente de IA do Maurício e posso detalhar seus <strong>projetos</strong> (como o Taranis Sales AI e Homelab Linux), sua <strong>matriz tecnológica</strong> ou fornecer os canais de <strong>contato</strong> direto!
                 `, "ai-msg");
             }
-        }, 550);
+        }, 500);
     }
 
     function enviarMensagem() {
